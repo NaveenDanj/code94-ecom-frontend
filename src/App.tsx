@@ -9,8 +9,13 @@ import AddPrduct from './pages/App/AddPrduct';
 import EditProduct from './pages/App/EditProduct';
 import { useEffect, useState } from 'react';
 import api from './api';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from './store/slices/UserSlice';
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
+import PrivateRoute from './components/PrivateRoute';
+import { RootState } from './store/store';
+
 
 const lightTheme = createTheme({
   palette: {
@@ -23,7 +28,9 @@ function App() {
 
   // const [authState, setAuthState] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [authState , setAuthState] = useState(false)
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
 
@@ -34,9 +41,11 @@ function App() {
         const res = await api.get('auth/current-user');
         console.log(res)
         dispatch(setUser(res.data.user))
+        setAuthState(true)
         setLoading(false)
       }catch(err){
         console.log(err)
+        setAuthState(false)
       }finally{
         setLoading(false)
       }
@@ -64,12 +73,15 @@ function App() {
         <Routes>
           
           <Route path="/" element={<MainLayout />}>
-            <Route index element={<Product />} />
-            <Route path='/favourite' element={<Favourite />} />
-            <Route path='/search' element={<SearchResult />} />
-            <Route path='/add-product' element={<AddPrduct />} />
-            <Route path='/edit-product' element={<EditProduct />} />
+            <Route index element={ <PrivateRoute element={ <Product />} />} />
+            <Route path='/favourite' element={ <PrivateRoute  element={ <Favourite />} /> } />
+            <Route path='/search' element={ <PrivateRoute  element={ <SearchResult />} /> } />
+            <Route path='/add-product' element={ <PrivateRoute  element={ <AddPrduct />} /> } />
+            <Route path='/edit-product' element={ <PrivateRoute element={ <EditProduct /> } /> } />
           </Route>
+
+          <Route path='auth/login' element={<Login />} />
+          <Route path='auth/register' element={<Register />} />
 
         </Routes>
 
