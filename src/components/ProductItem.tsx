@@ -1,6 +1,6 @@
 import editIcon from '../assets/icons/edit-icon.svg'
-import deleteIcon from '../assets/icons/delete-icon.svg'
 import starredIcon from '../assets/icons/starred.svg'
+import DeleteDialog from './DeleteDialog'
 
 function ProductItem() {
   return (
@@ -24,7 +24,7 @@ function ProductItem() {
 
         <div className="tw-my-auto tw-flex tw-justify-center tw-gap-3">
 
-            <img className="tw-w-[19px] tw-h-[19px] tw-cursor-pointer" src={deleteIcon} />
+            <DeleteDialog />
             <img className="tw-w-[19px] tw-h-[19px] tw-cursor-pointer" src={editIcon} />
             <img className="tw-w-[19px] tw-h-[19px] tw-cursor-pointer" src={starredIcon} />
 
