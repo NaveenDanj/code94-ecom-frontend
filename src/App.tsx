@@ -6,6 +6,7 @@ import Product from './pages/App/Product';
 import Favourite from './pages/App/Favourite';
 import SearchResult from './pages/App/SearchResult';
 import AddPrduct from './pages/App/AddPrduct';
+import EditProduct from './pages/App/EditProduct';
 
 const lightTheme = createTheme({
   palette: {
@@ -29,6 +30,7 @@ function App() {
             <Route path='/favourite' element={<Favourite />} />
             <Route path='/search' element={<SearchResult />} />
             <Route path='/add-product' element={<AddPrduct />} />
+            <Route path='/edit-product' element={<EditProduct />} />
           </Route>
 
         </Routes>
