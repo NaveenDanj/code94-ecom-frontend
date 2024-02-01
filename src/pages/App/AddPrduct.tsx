@@ -44,9 +44,12 @@ function AddPrduct() {
 
             setError(res.data.message)
             setFormData({ sku : '' , productName : ''  , quantity : 0 , description : '' , thumbnail : 0})
+            setImageList([])
 
         }catch(err){
             console.log(err)
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             setError(err.response.data.message)
         }finally{
             setLoading(false)
@@ -149,7 +152,16 @@ function AddPrduct() {
 
                 <div className='tw-flex tw-gap-3'>
 
-                {imageList.map( (file , index) => <img onClick={() => setFormData((prevData) => ({...prevData , thumbnail: index})) } style={{ border : formData.thumbnail == index ? '2px solid #001EB9' : '' }} key={index} className='tw-w-[85px] tw-h-[85px] tw-cursor-pointer' src={URL.createObjectURL(file)} />)}
+                {imageList.map( (file , index) =>
+                    <div>
+                        <img onClick={() => setFormData((prevData) => ({...prevData , thumbnail: index})) } style={{ border : formData.thumbnail == index ? '2px solid #001EB9' : '' }} key={index} className='tw-w-[85px] tw-h-[85px] tw-cursor-pointer' src={URL.createObjectURL(file)} />
+                        {formData.thumbnail == index && (
+                            <div className='tw-relative tw-top-[-100px] tw-left-[0px] tw-flex tw-justify-center tw-p-1 tw-rounded-md tw-bg-[#969191]'>
+                                <label className='tw-text-[8px] tw-text-white'>Thumbnail</label>
+                            </div>
+                        )}
+                    </div>
+                )}
 
                 </div>
 
