@@ -19,7 +19,7 @@ function MainBar() {
                 <img className='tw-w-[35px] tw-h-[35px] ' src={starIcon} />
             </button> 
         </div>
-    
+        
 
     </div>
   )

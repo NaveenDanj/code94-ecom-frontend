@@ -3,6 +3,7 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import MainLayout from './layout/MainLayout';
 import Product from './pages/App/Product';
+import Favourite from './pages/App/Favourite';
 
 const lightTheme = createTheme({
   palette: {
@@ -23,6 +24,7 @@ function App() {
           
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Product />} />
+            <Route path='/favourite' element={<Favourite />} />
           </Route>
 
         </Routes>
