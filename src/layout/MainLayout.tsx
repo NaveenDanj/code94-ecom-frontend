@@ -1,14 +1,18 @@
 import { Outlet } from 'react-router-dom'
 import arrowDown from '../assets/icons/down.svg'
+import { RootState } from '../store/store';
+import { useSelector } from 'react-redux';
 
 function MainLayout() {
+    const user = useSelector((state: RootState) => state.user );
+
   return (
     <div className='tw-flex tw-flex-col tw-w-full tw-h-[100vh] tw-overflow-y-hidden '>
         
         <div className='tw-p-3 tw-flex tw-justify-end tw-gap-8'>
             
             <div className='tw-flex tw-gap-3 tw-my-auto '>
-                <label className='tw-font-[700] tw-text-[19px]'>ADMIN</label>
+                <label className='tw-font-[700] tw-text-[19px]'>{user.userData?.fullname}</label>
                 <img className='tw-w-[24px] tw-h-[24px]' src={arrowDown} />
             </div>
 

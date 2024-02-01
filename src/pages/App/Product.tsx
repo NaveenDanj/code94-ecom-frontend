@@ -6,6 +6,7 @@ import api from "../../api"
 function Product() {
 
     const [products , setProducts] = useState([])
+    const [deleted , setDeleted] = useState(false)
 
     useEffect(() => {
 
@@ -18,6 +19,18 @@ function Product() {
         fetchProducts()
 
     } , [])
+
+    useEffect(() => {
+
+        const fetchProducts = async () => {
+            const res = await api.get('product/get-all-products?limit=100')
+            console.log(res)
+            setProducts(res.data.products)
+        }
+
+        fetchProducts()
+
+    } , [deleted])
 
 
     return (
@@ -52,7 +65,7 @@ function Product() {
             </div>
 
             <div className="tw-w-full tw-h-[calc(100vh-400px)] tw-overflow-y-auto tw-flex tw-flex-col">
-                {products.map((product , index) => <ProductItem product={product} key={index} /> )}
+                {products.map((product , index) => <ProductItem callback={setDeleted} product={product} key={index} /> )}
             </div>
 
             {/* <div>

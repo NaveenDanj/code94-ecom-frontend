@@ -7,3 +7,11 @@ export interface IProduct {
     images:string[];
     thumbnail:number;
 }
+
+export interface IUser {
+    _id:string;
+    fullname:string;
+    email:string;
+    password:string;
+    favouriteProducts:string[];
+}

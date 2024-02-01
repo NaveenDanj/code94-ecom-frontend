@@ -14,7 +14,6 @@ function EditProduct() {
 
     const [formData , setFormData] = useState({ sku : '' , productName : ''  , quantity : 0 , description : '' , thumbnail : 0})
     const [error , setError] = useState('')
-    const [imageList , setImageList] = useState<File[]>([])
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [loading , setLoading] = useState(false)
 
@@ -57,10 +56,6 @@ function EditProduct() {
             setLoading(true)
             
             const _formData = new FormData();
-
-            // event.target.files.forEach((image:File) => {
-            //     _formData.append('images', image);
-            // });
 
             for(let i = 0; i < event.target.files.length; i++){
                 _formData.append('images', event.target.files[i]);
