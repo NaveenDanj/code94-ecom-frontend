@@ -33,10 +33,19 @@ function Product() {
 
         </div>
 
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
+        <div className="tw-w-full tw-h-[calc(100vh-400px)] tw-overflow-y-auto tw-flex tw-flex-col">
+            <ProductItem />
+            <ProductItem />
+            <ProductItem />
+            <ProductItem />
+            <ProductItem />
+            <ProductItem />
+            <ProductItem />
+        </div>
+
+        {/* <div>
+            asd
+        </div> */}
 
 
     </div>

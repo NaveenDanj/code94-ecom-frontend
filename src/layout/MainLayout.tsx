@@ -3,7 +3,7 @@ import arrowDown from '../assets/icons/down.svg'
 
 function MainLayout() {
   return (
-    <div className='tw-flex tw-flex-col tw-w-full tw-h-[100vh]'>
+    <div className='tw-flex tw-flex-col tw-w-full tw-h-[100vh] tw-overflow-y-hidden '>
         
         <div className='tw-p-3 tw-flex tw-justify-end tw-gap-8'>
             
